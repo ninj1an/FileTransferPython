@@ -28,5 +28,12 @@ while i < len(pdf_list):
         i = f + 1
 #The try/except/finally handles any 'file not found' errors by storing the missing PDF name and then moving on.
 
+#Create a data frame to export missing PDFs to a CSV
+missingPDF = {'PDF Not Found' : e}
+df = pd.DataFrame(missingPDF)
+
+#Saves the CSV
+df.to_csv('MissingPDF.csv', index = False)
+
 print("All found files moved to repair folder.")
 print("Missing files: " + e)
