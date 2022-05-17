@@ -16,7 +16,7 @@ pdf_list = [x + 'pdf' for i, x in enumerate(new_list)]
 #Loop through listed PDFs to find and move to the repair folder
 f = 0
 taketwo = []
-while i < len(pdf_list):
+while f < len(pdf_list):
     try:
         src_path = "K:/PDFRequestor/PRODRepository/pdf/in/" + pdf_list[f]
         dst_path = "Z:/Maps/WebPDF/Repair/" + pdf_list[f]
@@ -25,13 +25,13 @@ while i < len(pdf_list):
         taketwo.append(pdf_list[f])
         pass
     finally:
-        i = f + 1
+        f = f + 1
 #The try/except/finally handles any 'file not found' errors by storing the missing PDF name and then moving on.
 
 #Search the other folder for any missing files not found in the first location
 f = 0
 e = []
-while i < len(taketwo):
+while f < len(taketwo):
     try:
         src_path = "Z:/Maps/WebPDF/ReviewTransferredFromServer/" + taketwo[f]
         dst_path = "Z:/Maps/WebPDF/Repair/" + taketwo[f]
@@ -40,7 +40,7 @@ while i < len(taketwo):
         e.append(taketwo[f])
         pass
     finally:
-        i = f + 1
+        f = f + 1
 
 #Create a data frame to export missing PDFs to a CSV
 missingPDF = {'PDF Not Found' : e}
