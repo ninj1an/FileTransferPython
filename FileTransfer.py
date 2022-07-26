@@ -1,9 +1,10 @@
 import os, shutil
+from traceback import print_list
 import pandas as pd
-
 os.getcwd()
+
 #read in the weekly edited mxd file and convert it to a list
-df = pd.read_csv("MXDDetailCircles.csv")
+df = pd.read_csv("MXDDetailCircles25July2022.csv")
 changed_mxd = df['MXD'].tolist()
 
 #create a new list to change the .mxd files to pdf extentions
@@ -28,9 +29,9 @@ while f < len(pdf_list):
         f = f + 1
 #The try/except/finally handles any 'file not found' errors by storing the missing PDF name and then moving on.
 
-#Search the other folder for any missing files not found in the first location
-f = 0
+#Search the second folder for any files not found in the first folder
 e = []
+f = 0
 while f < len(taketwo):
     try:
         src_path = "Z:/Maps/WebPDF/ReviewTransferredFromServer/" + taketwo[f]
@@ -42,11 +43,11 @@ while f < len(taketwo):
     finally:
         f = f + 1
 
-#Create a data frame to export missing PDFs to a CSV
-missingPDF = {'PDF Not Found' : e}
+#Create a frame to export missing PDFs to a CSV
+missingPDF = {'PDF Not Found': e}
 df = pd.DataFrame(missingPDF)
 
-#Saves the CSV
+#Save the CSV
 df.to_csv('MissingPDF.csv', index = False)
 
 print("All found files moved to repair folder.")
