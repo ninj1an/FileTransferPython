@@ -4,7 +4,7 @@ import pandas as pd
 os.getcwd()
 
 #read in the weekly edited mxd file and convert it to a list
-df = pd.read_csv("MXDDetailCircles25July2022.csv")
+df = pd.read_csv("MXDDetailCircles.csv")
 changed_mxd = df['MXD'].tolist()
 
 #create a new list to change the .mxd files to pdf extentions
